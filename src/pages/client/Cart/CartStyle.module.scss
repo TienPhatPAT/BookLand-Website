@@ -1,0 +1,21 @@
+.breadcrumb {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.cart {
+  padding-right: 6rem;
+}
+
+.cartContent {
+  display: flex;
+  gap: 2rem;
+
+  .cartContentBookList {
+    width: calc(#{8 / 12 * 100 + "%"} - 10px);
+  }
+
+  .cartContentPaymentBox {
+    width: calc(#{4 / 12 * 100 + "%"} - 10px);
+  }
+}

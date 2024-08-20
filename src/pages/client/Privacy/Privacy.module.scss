@@ -1,0 +1,129 @@
+.container {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #000;
+  /* Nền sáng hơn để làm nổi bật nội dung */
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  /* Bo góc cho container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Thêm bóng cho container */
+  h1 {
+    font-size: 32px;
+    /* Kích thước chữ tiêu đề chính */
+    color: #2c3e50;
+    /* Màu tiêu đề chính */
+    border-bottom: 2px solid #A259FF;
+    /* Gạch chân màu xanh */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    font-size: 24px;
+    /* Kích thước chữ tiêu đề phụ */
+    color: #A259FF;
+    /* Màu tiêu đề phụ */
+    border-bottom: 1px solid #ddd;
+    /* Gạch chân mỏng cho tiêu đề phụ */
+    padding-bottom: 8px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  p,
+  li,
+  a {
+    font-size: 15px;
+    /* Kích thước chữ cho văn bản */
+    line-height: 1.6;
+    /* Tăng khoảng cách dòng để văn bản dễ đọc hơn */
+  }
+
+  ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    list-style-type: disc;
+    /* Dấu chấm cho danh sách */
+  }
+
+  li {
+    margin-bottom: 10px;
+    padding-left: 10px;
+  }
+}
+
+
+
+
+
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  /* Cải thiện khoảng cách giữa bảng và các phần tử khác */
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #A259FF;
+  /* Màu nền cho tiêu đề bảng */
+  color: #fff;
+  /* Màu chữ cho tiêu đề bảng */
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #A259FF;
+  /* Nền của các hàng chẵn */
+}
+
+// .table tr:hover {
+//   background-color: #e1e1e1; /* Nền của hàng khi hover */
+// }
+
+.table{
+  strong {
+    font-weight: bold;
+    color: #e74c3c;
+    /* Màu cho các văn bản nổi bật */
+  }
+  
+  a {
+    color: #3498db;
+    text-decoration: none;
+    /* Bỏ gạch chân */
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    /* Gạch chân khi hover */
+  }
+  
+  button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+    /* Màu nền của button khi hover */
+  }
+}

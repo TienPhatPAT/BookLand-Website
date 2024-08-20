@@ -1,0 +1,148 @@
+/* Info_mation.module.css */
+
+.info_container {
+  width: 700px;
+}
+
+.info_info_mation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.info_Listinput {
+  width: 100%;
+}
+
+.info_Inputlitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  .MuiFormControl-root {
+    width: 100% !important;
+  }
+}
+
+.info_managerbutton {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+
+  button {
+    padding: 12px 24px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.38);
+    color: #ffffff;
+
+    &.button_active {
+      background-color: #4caf50;
+    }
+
+    &.button {
+      background-color: #333;
+    }
+  }
+}
+
+.info_right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    background-color: #444;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #a259ff;
+    color: #fff;
+    border: none;
+  }
+}
+
+.info_MuiFormControl-root {
+  width: 100% !important;
+}
+
+.info_MuiInputLabel-root {
+  color: #ffffff !important;
+  font-size: 18px !important;
+}
+
+.info_MuiInputBase-root {
+  background-color: #333 !important;
+  border-radius: 8px !important;
+  padding: 0 !important;
+  height: 50px !important;
+  color: #fff !important;
+}
+
+.info_MuiInputBase-input {
+  color: #fff !important;
+  font-size: 18px !important;
+  height: 100% !important;
+  box-sizing: border-box;
+}
+
+.info_Mui-disabled {
+  color: #777 !important;
+}
+
+.info_MuiTextField-root {
+  margin-bottom: 16px;
+  width: 500px !important;
+}
+
+.info_avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+/* Information.module.scss */
+
+.info_manager-button {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.info_button {
+  background-color: #444; /* Màu nền cho nút */
+  color: #fff; /* Màu chữ cho nút */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.info_button_active {
+  background-color: #a259ff; /* Màu nền cho nút "Cập nhật" */
+  color: #fff; /* Màu chữ cho nút "Cập nhật" */
+}
+.info_button:hover {
+  background-color: #a259ff; /* Màu nền khi hover trên nút "Hủy" */
+}
+.info_button_active:hover{
+  background-color: #8147cc;
+}

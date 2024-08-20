@@ -1,0 +1,27 @@
+@media (min-width: 1200px) {
+  .css-1oqqzyl-MuiContainer-root {
+    max-width: calc(100% - 6rem) !important;
+    padding: 0 !important;
+    margin: 0 0 12rem auto !important;
+  }
+}
+
+html {
+  .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    background-color: rgba(18, 18, 18, .9);
+    max-height: 20rem;
+    backdrop-filter: blur(6px);
+  }
+
+  .Mui-focus * {
+    outline: unset !important;
+  }
+
+  .css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input {
+    padding-right: 0;
+  }
+
+  .css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input {
+    padding: 0;
+  }
+}

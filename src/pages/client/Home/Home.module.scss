@@ -1,0 +1,36 @@
+.slider {
+  padding-right: 6rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6rem;
+  margin-top: 4rem;
+
+  .homeVideo {
+    padding-top: calc(57% * 4 / 12);
+    background: var(--background-url) no-repeat center / cover;
+    border-radius: 1rem;
+  }
+}
+
+.typeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  row-gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+  padding-right: 4rem;
+
+  .moreBtn {
+    height: 3rem;
+    width: 3rem;
+    background-color: rgba(255, 255, 255, .05);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}

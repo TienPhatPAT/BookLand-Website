@@ -1,0 +1,135 @@
+.processing,
+.complete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.processing_total,
+.complete_total {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: rgba(#000, 0.05);
+  gap: 20px;
+  // backdrop-filter: blur(6px);
+  box-shadow: 0 0 .4rem rgba(#fff, .04);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 200px;
+  padding: 0 10px 10px 0px;
+  border-bottom: 1px solid rgba(var(--gray-text-color-rgb), .3);
+  // background: rgba(255, 255, 255, 0.00);
+
+  p {
+    color: #9E9FB4;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.box_product {
+  align-items: center;
+  gap: 20px;
+
+  .image {
+    flex-shrink: 0;
+    border-radius: 10px;
+    width: 100px;
+    background: url(<path-to-image>) lightgray -22.27px 0px / 163.399% 100% no-repeat;
+
+    div {
+      padding-top: 150%;
+    }
+  }
+}
+
+.more {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1px solid rgba(158, 159, 180, 0.30);
+
+  p {
+    color: #9E9FB4;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.info {
+  display: flex;
+  width: 828px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name_author {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  h2 {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  p {
+    color: var(--9E9FB4, rgba(158, 159, 180, 0.50));
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.price_amount {
+  display: flex;
+  width: 164px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+
+  h2 {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  p {
+    color: var(--9E9FB4, rgba(158, 159, 180, 0.50));
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

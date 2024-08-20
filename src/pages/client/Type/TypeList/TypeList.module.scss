@@ -1,0 +1,12 @@
+.typeList {
+  padding-right: 6rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 2rem;
+
+  &>div {
+    width: calc((100% - 2rem * (var(--col) - 1))/var(--col))
+  }
+}

@@ -1,0 +1,39 @@
+.heading {
+  font-size: 2rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: .4rem;
+  transition: opacity 2s ease-in-out;
+
+  &:hover {
+    .moreLink {
+      opacity: 1;
+    }
+  }
+
+  .moreLink {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    // align-self: end;
+    opacity: 0;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: .6rem;
+    }
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+  }
+}

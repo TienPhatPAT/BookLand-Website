@@ -1,0 +1,109 @@
+/* Security.module.css */
+
+.sec_container {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.sec_security_header {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.sec_security_form {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sec_form_group {
+  margin-bottom: 16px;
+}
+
+.sec_form_input {
+  background-color: #333;
+  color: #fff;
+  font-size: 18px;
+
+  & .MuiInputLabel-root {
+    color: #aaa;
+    font-size: 18px;
+  }
+
+  & .MuiOutlinedInput-root {
+    & .MuiInputAdornment-root .MuiSvgIcon-root {
+      color: #aaa;
+    }
+  }
+
+  & .MuiFormHelperText-root {
+    color: #888;
+    font-size: 13px;
+  }
+}
+
+.sec_form_button {
+  margin-top: 16px;
+  font-size: 10px;
+}
+
+.sec_phone_verification_section {
+  margin-bottom: 20px;
+}
+
+.sec_phone_verification_section .sec_form_group {
+  font-size: 18px;
+}
+
+.sec_phone_verification_section .sec_form_input {
+  background-color: #444;
+}
+
+.sec_phone_verification_section .sec_form_button {
+  font-size: 10px;
+  padding: 10px 20px;
+}
+
+.sec_divider {
+  margin: 20px 0;
+  background-color: #444;
+}
+
+.sec_section_header {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.sec_alert {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.sec_security_methods {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.sec_method_button {
+  color: #fff;
+  border: 1px solid #444;
+  font-size: 18px;
+  padding: 6px 12px;
+}
+
+.sec_method_button:hover {
+  background-color: #333;
+  border-color: #666;
+}

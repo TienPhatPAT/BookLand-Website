@@ -1,0 +1,366 @@
+.bookDetail {
+  display: flex;
+  gap: 2rem;
+  padding-right: 6rem;
+
+  .cover {
+    border-radius: 1rem;
+
+    & > div {
+      padding-top: 153.11%;
+    }
+  }
+
+  .nameBookWrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .name {
+      font-size: 2.6rem;
+      font-weight: 700;
+    }
+
+    .recommendedLabel {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--white-text-color);
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 0.4rem 1rem;
+      border-radius: 0.4rem;
+      text-wrap: nowrap;
+      cursor: pointer;
+    }
+  }
+
+  .ratingWrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 1rem;
+
+    .star {
+      height: 1.4rem;
+    }
+
+    .point {
+      width: 3px;
+      height: 3px;
+      border-radius: 10px;
+      background: #9e9fb4;
+    }
+
+    .rating {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+  }
+
+  .bookInforWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    gap: 2rem;
+
+    & > div {
+      gap: 2rem;
+      width: calc(58.333% - 2rem);
+    }
+
+    h4 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--gray-text-color);
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+    .price {
+      color: var(--primary-color); // Màu của giá có thể thay đổi theo nhu cầu
+      font-size: 1.6rem; // Kích thước chữ của giá có thể thay đổi theo nhu cầu
+      font-weight: bold; // Độ đậm của chữ giá có thể thay đổi theo nhu cầu
+    }
+  }
+
+  .addCartWrapper {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  // Styles cho phần reviews
+  .reviews {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+    .reviews_header {
+      display: flex;
+      margin-bottom: 2rem;
+      gap: 2rem;
+
+      .reviews_count {
+        span {
+          font-size: 1.6rem;
+          border-radius: 100px;
+          background: rgba(255, 255, 255, 0.05);
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      .ratings_count {
+        h4 {
+          font-size: 1.6rem;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .reviews_list {
+      .review_item {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      .review {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .review_user {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .user_name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-right: 20px;
+          }
+
+          .time {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(158, 159, 180, 0.5);
+          }
+        }
+
+        .review_content {
+          font-size: 1.5rem;
+          font-weight: 400;
+          color: var(--Color, #fff);
+        }
+
+        .review_actions {
+          display: flex;
+          gap: 1rem;
+          margin-top: 0.5rem;
+
+          .reply_button,
+          .like_count,
+          .reply_count {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+
+          .reply_button {
+            font-size: 1.4rem;
+            color: #a259ff;
+            cursor: pointer;
+          }
+
+          .like_count {
+            color: #ff375f;
+          }
+
+          .reply_count {
+            color: rgba(158, 159, 180, 0.5);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Xóa CSS không cần thiết
+
+.total {
+  flex-direction: column;
+}
+
+.nameBook button {
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 10px;
+}
+
+.nameBook h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.book_info {
+  width: 100%;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.rating_count {
+  margin-left: 20px;
+}
+
+.top_rated {
+  margin-bottom: 16px;
+  font-size: 15px;
+  display: inline-flex;
+  background-color: #1a0005;
+  border-radius: 100px;
+  padding: 6px 10px;
+  align-items: center;
+  font-weight: 500;
+}
+
+.top_rated span {
+  color: #ff375f;
+
+  img {
+    margin-left: 10px;
+  }
+}
+
+.hashtag {
+  color: #fff;
+  margin-right: 8px;
+  border-radius: 100px;
+  border: none;
+  background-color: #ff375f;
+  padding: 4px 6px;
+}
+
+.book_details {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  h4 {
+    color: var(--Color, #fff);
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  span {
+    color: var(--Color, #fff);
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.book_actions {
+  display: flex;
+  margin-bottom: 32px;
+  gap: 10px;
+}
+
+.read_button {
+  background-color: #a259ff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.listen_button {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.favorite_star {
+  display: flex;
+  width: 43px;
+  height: 43px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  border: none;
+}
+
+.book_description {
+  margin-bottom: 32px;
+  font-size: 17px;
+
+  p {
+    display: flex;
+    width: 610px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.more_info {
+  color: #a259ff;
+  text-decoration: none;
+  background-color: #000;
+  border: none;
+}
+
+.cover {
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 8px; // tùy chọn để thêm viền tròn nếu cần
+  }
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user_name {
+  font-size: 1.8rem; // Set the font size
+  font-weight: 600; // Set the font weight
+}

@@ -1,0 +1,113 @@
+.bookItem {
+  margin-right: 2rem;
+  max-width: 100%;
+  // overflow: hidden;
+
+  &__noMargin {
+    margin-right: unset;
+  }
+
+  .cover {
+    padding-top: 150%;
+    border-radius: 1rem;
+    margin-bottom: .8rem;
+    position: relative;
+  }
+
+  .progress {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    height: .6rem;
+    background-color: #ffffff80;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    &:before {
+      content: "";
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: var(--progress-value);
+    }
+  }
+
+  .label {
+    position: absolute;
+    right: -.4rem;
+    top: 1rem;
+    border-radius: 100rem;
+
+    .text {
+      padding: 0 1rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      height: 2.8rem;
+      width: 2.8rem;
+      background-color: #fff;
+      border-radius: 100rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_free {
+      background: var(--gradient-green);
+
+      .free {
+        display: flex;
+        align-items: center;
+      }
+
+      .membership,
+      .price {
+        display: none;
+      }
+    }
+
+    &_membership {
+      background: var(--gradient-orange);
+
+      .membership {
+        display: flex;
+        align-items: center;
+      }
+
+      .free,
+      .price {
+        display: none;
+      }
+    }
+
+    &_price {
+      background: var(--gradient-pink);
+
+      .price {
+        display: flex;
+        align-items: center;
+      }
+
+      .free,
+      .membership {
+        display: none;
+      }
+    }
+
+  }
+
+  .name {
+    font-size: 1.4rem;
+    font-weight: 500;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+}

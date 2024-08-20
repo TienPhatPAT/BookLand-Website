@@ -1,0 +1,68 @@
+.linked_accounts_container {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  h4{
+    font-size: 20px;
+  }
+}
+
+.linked_accounts_header {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.linked_accounts_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.linked_account_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.account_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.unlink_button {
+  background-color: #f44336; /* Màu đỏ cho nút hủy liên kết */
+  &:hover {
+    background-color: #d32f2f;
+  }
+}
+
+.link_button {
+  background-color: #9e9e9e; /* Màu xám cho nút chưa liên kết */
+  &:hover {
+    background-color: #7e7e7e;
+  }
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+.divider {
+  background-color: #444;
+}
+
+.add_account_button {
+  background-color: #a259ff; 
+  &:hover {
+    background-color: #8147cc;
+  }
+}

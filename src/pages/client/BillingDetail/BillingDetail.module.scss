@@ -1,0 +1,189 @@
+.orderDetail {
+  background-color: #1e1e1e !important; /* Nền xám tối cho phần chi tiết đơn hàng */
+  color: #e0e0e0 !important; /* Màu văn bản sáng */
+  padding: 32px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  gap: 32px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  font-size: 15px !important; /* Set base font size to 15px */
+}
+
+.orderInfoContainer {
+  flex: 2 !important;
+}
+
+.pageTitle {
+  color: #ffffff !important;
+  font-size: 30px !important;   
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+}
+
+.orderInfo {
+  background-color: #2c2c2c !important; /* Nền xám sáng cho thông tin đơn hàng */
+  border-radius: 10px !important;
+  padding: 24px !important; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  margin-bottom: 24px !important; 
+}
+
+.infoTitle {
+  font-size: 20px !important; 
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;  
+}
+
+.infoText {
+  font-size: 15px !important;  
+}
+
+.sectionTitle {
+  color: #ffffff !important;
+  margin-top: 16px !important;   
+  margin-bottom: 16px !important;   
+  font-size: 24px !important;   
+  font-weight: 600 !important;
+}
+
+.productList {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;   
+}
+
+.productItem {
+  display: flex !important;
+  align-items: center !important;
+  background-color: #333333 !important; /* Nền tối cho hộp sản phẩm */
+  padding: 16px !important;   
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.productItem img {
+  width: 100px !important; /* Kích thước hình ảnh sản phẩm */
+  height: auto !important;
+  border-radius: 8px !important;
+  margin-right: 24px !important;   
+}
+
+.productInfo {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;  
+}
+
+.productName {
+  font-size: 19.2px !important; /* 1.2rem */
+  font-weight: 600 !important;
+}
+
+.productAuthor,
+.productPrice,
+.productQuantity {
+  font-size: 14.4px !important;  
+}
+
+.buyerInfoContainer {
+  flex: 1 !important;
+}
+
+.buyerInfo {
+  background-color: #2c2c2c !important; /* Nền xám sáng cho thông tin người mua */
+  border-radius: 10px !important;
+  padding: 24px !important;   
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 16px !important;   
+}
+
+.avatar {
+  width: 80px !important; /* Kích thước nhỏ hơn cho ảnh đại diện */
+  height: 80px !important;
+  border-radius: 50% !important; /* Đảm bảo ảnh đại diện là hình tròn */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.buyerTitle {
+  font-size: 19.2px !important; /* 1.2rem */
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+.buyerText {
+  font-size: 14.4px !important;  
+  color: #d0d0d0 !important;
+}
+
+.contactButton {
+  margin-top: 24px !important;   
+  padding: 12px 32px !important; /* 0.75rem 2rem */
+  font-size: 14.4px !important;  
+  border-radius: 8px !important;
+  background-color: #007bff !important; /* Màu nền cho nút */
+  color: #ffffff !important; /* Màu chữ trên nút */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  &:hover {
+    background-color: #0056b3 !important; /* Màu nền khi di chuột qua */
+  }
+}
+
+.invoice {
+  background-color: #2c2c2c !important; /* Nền xám sáng cho phần hóa đơn */
+  border-radius: 10px !important;
+  padding: 24px !important;   
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  margin-top: 32px !important; /* 2rem */
+}
+
+.invoiceItem {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-bottom: 8px !important;  
+}
+
+.invoiceText {
+  font-size: 14.4px !important;  
+  color: #d0d0d0 !important;
+}
+
+.invoiceAmount {
+  font-size: 14.4px !important;  
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+.invoiceTotal {
+  border-top: 2px solid #ffffff !important;
+  padding-top: 10px !important;
+  margin-top: 10px !important;
+}
+
+.paymentStatus {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 1px solid #444 !important; /* Đường viền dưới trạng thái thanh toán */
+  padding-bottom: 8px !important;  
+  margin-bottom: 16px !important;   
+}
+
+.paymentStatusText {
+  font-size: 14.4px !important;  
+  color: #d0d0d0 !important;
+}
+
+.paymentStatusValue {
+  font-size: 14.4px !important;  
+  font-weight: 600 !important;
+  color: #00ff00 !important; /* Màu xanh lá cho đã thanh toán */
+}
+
+.paymentStatusValue.unpaid {
+  color: #ff0000 !important; /* Màu đỏ cho chưa thanh toán */
+}

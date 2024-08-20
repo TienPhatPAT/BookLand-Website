@@ -1,0 +1,11 @@
+.bookList {
+  margin-top: 2rem;
+  text-wrap: nowrap;
+  overflow: scroll;
+  margin-bottom: 6rem;
+
+  &>* {
+    width: calc((100% - 6rem - 10rem) / 6);
+    display: inline-block;
+  }
+}

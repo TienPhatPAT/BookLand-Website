@@ -1,0 +1,54 @@
+/* Account.module.css */
+
+.account_Listpersonal div {
+  color: #f1f1f1;
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: -5px;
+}
+
+.account_Listinput {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 35px;
+  & > input {
+    background-color: transparent;
+    border: solid 1px;
+    align-content: center;
+    width: 600px;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+}
+
+.account_Inputlitle input {
+  width: 300px;
+}
+
+.account_Listinput input {
+  background-color: transparent;
+  border: solid 1px;
+  align-content: center;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.account_button {
+  background-color: transparent;
+  width: 120px;
+  height: 30px;
+}
+
+.account_left {
+  display: flex;
+  background-color: #f1f1f1;
+}
+
+.account_right {
+  float: left;
+  display: flex;
+  background-color: #f1f1f1;
+}

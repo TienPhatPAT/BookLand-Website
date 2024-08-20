@@ -1,0 +1,7 @@
+.sidebarLine {
+  background-color: rgba(var(--sidebar-text-color-rgb), .3);
+  width: calc(100% - 4rem);
+  height: 1px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

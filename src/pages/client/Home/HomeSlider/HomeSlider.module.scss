@@ -1,0 +1,17 @@
+// .homeSlider {
+//   padding-top: calc(36.42%);
+//   background: url("https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3373.jpg?v=1&w=1920&h=600")
+//     no-repeat center / cover;
+//   border-radius: 1rem;
+// }
+.image-slider-container {
+  margin: 0 auto;
+  width: 400px;
+  padding-top: calc(36.42%);
+  border-radius: 1rem;
+}
+
+.image-slider-container .slick-prev:before,
+.image-slider-container .slick-next:before {
+  color: black;
+}
