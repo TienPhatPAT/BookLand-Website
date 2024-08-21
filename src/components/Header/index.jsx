@@ -70,6 +70,7 @@ const Header = ({
   const [suggestList, setSuggestList] = React.useState([]);
   const [searchLoading, setSearchLoading] = React.useState(false);
   const quantity = getIdCartList()?.reduce((total, item) => total + item.quantity, 0);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     setSearchLoading(true);
@@ -150,10 +151,18 @@ const Header = ({
       <div className={classes.heading}>
         <div className="d-flex align-items-center">
           <div className={classes.toolBtn}>
-            <button>
+            <button
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
               <Icon.LongArrowLeftIcon color="var(--header-text-color)" />
             </button>
-            <button>
+            <button
+              onClick={() => {
+                navigate(1);
+              }}
+            >
               <Icon.LongArrowRightIcon color="var(--header-text-color)" />
             </button>{" "}
           </div>

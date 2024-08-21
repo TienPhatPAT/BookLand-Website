@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { fetchApi, getApiEnv } from "../../../utils/api";
 import RankList from "./RankList";
+import _ from "lodash";
 
 const Ranking = () => {
   const [value, setValue] = useState(0);
@@ -47,11 +48,8 @@ const Ranking = () => {
 
   useEffect(() => {
     fetchApi(`${getApiEnv()}/Sach`).then((data) => {
-      setRecomendedBookList(
-        data?.data
-          .filter((item) => item.isRecommended === true)
-          .sort((a, b) => a.recomendedPriority - b.recomendedPriority)
-      );
+      const shuffledBooks = _.shuffle(data?.data);
+      setRecomendedBookList(shuffledBooks);
       setNewestBookList(data?.data.sort((a, b) => a.ngayxuatban - b.ngayxuatban));
       settopBookList(data?.data.sort((a, b) => a.luotxem - b.luotxem));
     });
@@ -120,7 +118,7 @@ const Ranking = () => {
         />
         <Tab
           disableRipple
-          label="Bán chạy"
+          label="Đề xuất"
           sx={{
             padding: ".4rem 2rem",
             fontSize: "1.2rem",
@@ -141,75 +139,6 @@ const Ranking = () => {
           }}
           {...a11yProps(1)}
         />
-        <Tab
-          disableRipple
-          label="Yêu thích"
-          sx={{
-            padding: ".4rem 2rem",
-            fontSize: "1.2rem",
-            fontWeight: "500",
-            color: "var(--gray-text-color)",
-            textTransform: "uppercase",
-            border: "rgba(255, 255, 255, .1) solid .1rem",
-            borderRadius: "100px",
-            marginRight: "1.2rem",
-            display: "block",
-            minHeight: "unset",
-
-            "&.Mui-selected": {
-              color: "#fff",
-              border: "none",
-              backgroundColor: "var(--primary-color)",
-            },
-          }}
-          {...a11yProps(2)}
-        />
-        <Tab
-          disableRipple
-          label="Xem nhiều"
-          sx={{
-            padding: ".4rem 2rem",
-            fontSize: "1.2rem",
-            fontWeight: "500",
-            color: "var(--gray-text-color)",
-            textTransform: "uppercase",
-            border: "rgba(255, 255, 255, .1) solid .1rem",
-            borderRadius: "100px",
-            marginRight: "1.2rem",
-            display: "block",
-            minHeight: "unset",
-
-            "&.Mui-selected": {
-              color: "#fff",
-              border: "none",
-              backgroundColor: "var(--primary-color)",
-            },
-          }}
-          {...a11yProps(3)}
-        />
-        <Tab
-          disableRipple
-          label="Đề xuất"
-          sx={{
-            padding: ".4rem 2rem",
-            fontSize: "1.2rem",
-            fontWeight: "500",
-            color: "var(--gray-text-color)",
-            textTransform: "uppercase",
-            border: "rgba(255, 255, 255, .1) solid .1rem",
-            borderRadius: "100px",
-            marginRight: "1.2rem",
-            display: "block",
-            minHeight: "unset",
-
-            "&.Mui-selected": {
-              color: "#fff",
-              border: "none",
-              backgroundColor: "var(--primary-color)",
-            },
-          }}
-          {...a11yProps(4)}
-        />
       </Tabs>
       <CustomTabPanel value={value} index={0}>
         <RankList
@@ -221,35 +150,8 @@ const Ranking = () => {
       <CustomTabPanel value={value} index={1}>
         <RankList
           setCurrentLabel={setCurrentLabel}
-          newLabel="Bán chạy"
-          bookList={topBookList.slice(0, topBookList.length - 1).sort((a, b) => b.sold - a.sold)}
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        <RankList
-          setCurrentLabel={setCurrentLabel}
-          newLabel="Yêu thích"
-          bookList={topBookList
-            .slice(0, topBookList.length - 1)
-            .sort((a, b) => b.favorite - a.favorite)}
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={3}>
-        <RankList
-          setCurrentLabel={setCurrentLabel}
-          newLabel="Xem nhiều"
-          bookList={topBookList
-            .slice(0, topBookList.length - 1)
-            .sort((a, b) => b.luotxem - a.luotxem)}
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={4}>
-        <RankList
-          setCurrentLabel={setCurrentLabel}
           newLabel="Đề xuất"
-          bookList={topBookList
-            .filter((item) => item.isRecommended === true)
-            .sort((a, b) => b.recomendedPriority - a.recomendedPriority)}
+          bookList={recomendedBookList}
         />
       </CustomTabPanel>
     </Container>

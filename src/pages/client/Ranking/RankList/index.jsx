@@ -5,9 +5,11 @@ import * as Icon from "../../../../components/Icon";
 import { Typography } from "@mui/material";
 import StarBar from "../../../../components/StarBar";
 import { abbreviateNumber } from "../../../../utils/string";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { increaseQuantityById } from "../../../../services/Cart";
 
 const RankList = ({ bookList, setCurrentLabel, newLabel }) => {
+  const navigate = useNavigate();
   setCurrentLabel(newLabel);
   return (
     <div className={classes.rankList}>
@@ -42,7 +44,7 @@ const RankList = ({ bookList, setCurrentLabel, newLabel }) => {
                   {book.ten}
                 </Typography>
               </Link>
-              <StarBar starCount={book.__v}></StarBar>
+              {/* <StarBar starCount={book.__v}></StarBar> */}
             </div>
             <div className={clsx(classes.author, "col-2 d-flex justify-content-center")}>
               <Typography
@@ -56,20 +58,26 @@ const RankList = ({ bookList, setCurrentLabel, newLabel }) => {
               </Typography>
             </div>
             <div className={clsx(classes.tool, "col-3  d-flex justify-content-end")}>
-              <div className={classes.toolItem}>
+              <div
+                className={classes.toolItem}
+                onClick={() => {
+                  location.reload();
+                  increaseQuantityById(book._id);
+                }}
+              >
                 <Icon.CartBagIcon
                   type="light"
                   color="var(--gray-text-color)"
-                  height="1.4rem"
+                  height="2.5rem"
                   width="auto"
                 />
                 <span className={classes.label}>{abbreviateNumber(book.sold, 0)}</span>
               </div>
-              <div className={classes.toolItem}>
+              <div className={classes.toolItem} onClick={() => navigate("/book/" + book._id)}>
                 <Icon.EyeIcon
                   type="light"
                   color="var(--gray-text-color)"
-                  height="1.4rem"
+                  height="2.5rem"
                   width="auto"
                 />
                 <span className={classes.label}>{abbreviateNumber(book.view, 0)}</span>
@@ -78,7 +86,7 @@ const RankList = ({ bookList, setCurrentLabel, newLabel }) => {
                 <Icon.HeartIcon
                   type="light"
                   color="var(--gray-text-color)"
-                  height="1.4rem"
+                  height="2.5rem"
                   width="auto"
                 />
                 <span className={classes.label}>{abbreviateNumber(book.favorite, 0)}</span>
