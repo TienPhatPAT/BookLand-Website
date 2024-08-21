@@ -13,6 +13,7 @@ import * as Icon from "../../../components/Icon";
 import BookList from "../../../components/BookList";
 import ArthorList from "../../../components/ArthorList";
 import BlogList from "../../../components/BlogList";
+import _ from "lodash";
 
 const Home = () => {
   const [value, setValue] = useState(0);
@@ -66,11 +67,8 @@ const Home = () => {
 
   useEffect(() => {
     fetchApi(`${getApiEnv()}/Sach`).then((data) => {
-      setRecomendedBookList(
-        data?.data
-          .filter((item) => item.isRecommended === true)
-          .sort((a, b) => b.recomendedPriority - a.recomendedPriority)
-      );
+      const shuffledBooks = _.shuffle(data?.data);
+      setRecomendedBookList(shuffledBooks.slice(0, 10));
       setNewestBookList(data?.data.sort((a, b) => b.ngayxuatban - a.ngayxuatban));
       settopBookList(data?.data.sort((a, b) => b.luotxem - a.luotxem));
     });

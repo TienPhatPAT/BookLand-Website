@@ -59,7 +59,7 @@ const CartListItem = (props) => {
     <>
       {isShow && (
         <div className={classes.cartList}>
-          <Link to={"/book/" + props.id}>
+          <Link to={"/book/" + props._id}>
             <Image url={props.img} className={classes.cover}>
               <div></div>
             </Image>

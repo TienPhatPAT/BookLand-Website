@@ -14,9 +14,9 @@
   h1 {
     font-size: 32px;
     /* Kích thước chữ tiêu đề chính */
-    color: #2c3e50;
+    color: #fff;
     /* Màu tiêu đề chính */
-    border-bottom: 2px solid #A259FF;
+    border-bottom: 2px solid #a259ff;
     /* Gạch chân màu xanh */
     padding-bottom: 10px;
     margin-bottom: 30px;
@@ -25,7 +25,7 @@
   h2 {
     font-size: 24px;
     /* Kích thước chữ tiêu đề phụ */
-    color: #A259FF;
+    color: #a259ff;
     /* Màu tiêu đề phụ */
     border-bottom: 1px solid #ddd;
     /* Gạch chân mỏng cho tiêu đề phụ */
@@ -56,12 +56,6 @@
   }
 }
 
-
-
-
-
-
-
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -77,7 +71,7 @@
 }
 
 .table th {
-  background-color: #A259FF;
+  background-color: #a259ff;
   /* Màu nền cho tiêu đề bảng */
   color: #fff;
   /* Màu chữ cho tiêu đề bảng */
@@ -85,7 +79,7 @@
 }
 
 .table tr:nth-child(even) {
-  background-color: #A259FF;
+  background-color: #a259ff;
   /* Nền của các hàng chẵn */
 }
 
@@ -93,24 +87,24 @@
 //   background-color: #e1e1e1; /* Nền của hàng khi hover */
 // }
 
-.table{
+.table {
   strong {
     font-weight: bold;
     color: #e74c3c;
     /* Màu cho các văn bản nổi bật */
   }
-  
+
   a {
     color: #3498db;
     text-decoration: none;
     /* Bỏ gạch chân */
   }
-  
+
   a:hover {
     text-decoration: underline;
     /* Gạch chân khi hover */
   }
-  
+
   button {
     background-color: #3498db;
     color: #fff;
@@ -121,7 +115,7 @@
     font-size: 16px;
     margin-top: 20px;
   }
-  
+
   button:hover {
     background-color: #2980b9;
     /* Màu nền của button khi hover */
