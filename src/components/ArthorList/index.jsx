@@ -3,6 +3,7 @@ import BookItem from "../BookItem";
 import BookListHeading from "../BookListHeading";
 import classes from "./BookList.module.scss";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
 
 const ArthorList = ({ heading = "", arthorList = [] }) => {
   var settings = {
@@ -12,6 +13,7 @@ const ArthorList = ({ heading = "", arthorList = [] }) => {
     slidesToShow: 8,
     slidesToScroll: 5,
   };
+  const navigate = useNavigate();
   return (
     <>
       {heading && <BookListHeading label={heading}></BookListHeading>}
@@ -20,17 +22,18 @@ const ArthorList = ({ heading = "", arthorList = [] }) => {
           {arthorList.map((tacgia, index) => {
             return (
               <Box padding="0 10px" key={index}>
-                <Link key={index} href={"/author/" + tacgia._id}>
-                  <Stack
-                    justifyContent="center"
-                    alignItems={"center"}
-                    spacing={1}
-                    sx={{ cursor: "pointer" }}
-                  >
-                    <Avatar alt="Remy Sharp" src={tacgia.img} sx={{ width: 100, height: 100 }} />
-                    <Typography>{tacgia.ten}</Typography>
-                  </Stack>
-                </Link>
+                <Stack
+                  justifyContent="center"
+                  alignItems={"center"}
+                  spacing={1}
+                  sx={{ cursor: "pointer" }}
+                  onClick={() => navigate(`/author/${tacgia._id}`)}
+                >
+                  <Avatar alt="Remy Sharp" src={tacgia.img} sx={{ width: 150, height: 150 }} />
+                  <Typography sx={{ textAlign: "center", fontSize: "14px" }}>
+                    {tacgia.ten}
+                  </Typography>
+                </Stack>
               </Box>
             );
           })}

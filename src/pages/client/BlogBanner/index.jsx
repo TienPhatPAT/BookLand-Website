@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchApi, getApiEnv } from "../../../utils/api";
 import classes from "./BlogBanner.module.scss";
 import BreadcrumbBar from "../../../components/BreadcrumbBar";
@@ -11,6 +11,7 @@ const BlogBanner = () => {
   const [listBanner, setListBanner] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     fetchApi(`${import.meta.env.VITE_API}/baiviet`).then((data) => {
       setListBanner(data?.data);
@@ -66,15 +67,19 @@ const BlogBanner = () => {
                   display: "flex",
                   flexDirection: "row",
                 }}
-                onClick={() => window.open("/banner/" + item._id)}
+                onClick={() => navigate("/banner/" + item._id)}
               >
-                <CardMedia sx={{ height: 140, width: 200 }} image={item.img} title="green iguana" />
-                <CardContent>
+                <CardMedia
+                  sx={{ height: 100, width: "40%" }}
+                  image={item.img}
+                  title="green iguana"
+                />
+                <CardContent sx={{ width: "60%" }}>
                   <Typography
                     gutterBottom
                     variant="h4"
                     component="div"
-                    sx={{ textDecoration: "none" }}
+                    sx={{ textDecoration: "none", fontSize: 20 }}
                   >
                     {item.tieude}
                   </Typography>

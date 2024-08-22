@@ -13,15 +13,17 @@ import BookItem from "../BookItem";
 import BookListHeading from "../BookListHeading";
 import classes from "./BookList.module.scss";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
 
 const BlogList = ({ heading = "", blogList = [] }) => {
   var settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 6,
     slidesToScroll: 5,
   };
+  const navigate = useNavigate();
   return (
     <>
       {heading && <BookListHeading label={heading}></BookListHeading>}
@@ -30,7 +32,7 @@ const BlogList = ({ heading = "", blogList = [] }) => {
         <Slider {...settings}>
           {blogList.map((blog, index) => {
             return (
-              <Box padding="0 10px" key={index}>
+              <Box sx={{ maxWidth: "250px !important" }} padding="0 10px" key={index}>
                 <Card
                   sx={{
                     maxWidth: 345,
@@ -38,7 +40,7 @@ const BlogList = ({ heading = "", blogList = [] }) => {
                     backgroundColor: "transparent",
                     cursor: "pointer",
                   }}
-                  onClick={() => window.open("/banner/" + blog._id)}
+                  onClick={() => navigate("/banner/" + blog._id)}
                 >
                   <CardMedia sx={{ height: 140 }} image={blog.img} title="green iguana" />
                   <CardContent sx={{ padding: "10px 0" }}>
@@ -46,7 +48,13 @@ const BlogList = ({ heading = "", blogList = [] }) => {
                       gutterBottom
                       variant="h4"
                       component="div"
-                      sx={{ textDecoration: "none" }}
+                      sx={{
+                        textDecoration: "none",
+                        fontSize: 14,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
                     >
                       {blog.tieude}
                     </Typography>

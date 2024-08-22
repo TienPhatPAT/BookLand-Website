@@ -93,7 +93,7 @@ const BookDetail = () => {
 
           <div className={classes.ratingWrapper}>
             <div className={classes.star}>
-              <StarBar starCount={book.star} />
+              <StarBar starCount={4.5} />
             </div>
             <div className={classes.point}></div>
             <span className={classes.rating}>123 lượt đánh giá</span>

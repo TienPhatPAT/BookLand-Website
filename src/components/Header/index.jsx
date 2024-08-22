@@ -200,8 +200,6 @@ const Header = ({
               <Icon.CartBagIcon type="light" color="var(--header-text-color)" />
             </NavLink>
           </Badge>
-          <Icon.BellWithArrow color="var(--header-text-color)" />
-          <Icon.SettingIcon type="light" color="var(--header-text-color)" />
           <AccountLogin loginBox={loginBox} setLoginBox={setLoginBox} setSignUpBox={setSignUpBox} />
         </div>
       </div>

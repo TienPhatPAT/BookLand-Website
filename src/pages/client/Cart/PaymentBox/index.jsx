@@ -12,6 +12,7 @@ import {
   Radio,
   FormControl,
   Alert,
+  Divider,
 } from "@mui/material";
 import classes from "./PaymentBox.module.scss";
 import * as Icon from "../../../../components/Icon";
@@ -303,15 +304,64 @@ const PaymentBox = ({ totalQuantity, totalPrice }) => {
       >
         {totalQuantity} sản phẩm
       </Typography>
+      <div
+        className="d-flex justify-content-between align-items-center"
+        style={{ marginTop: "0.5rem" }}
+      >
+        <Typography
+          sx={{
+            fontWeight: "500",
+            fontSize: "1.6rem",
+            color: "var(--white-text-color)",
+          }}
+        >
+          Tổng tiền hàng
+        </Typography>
+        <Typography
+          sx={{
+            fontWeight: "500",
+            fontSize: "1.6rem",
+            color: "var(--white-text-color)",
+          }}
+        >
+          {formatMoney(totalPrice)} VNĐ
+        </Typography>
+      </div>
+      <div
+        className="d-flex justify-content-between align-items-center"
+        style={{ marginTop: "1rem" }}
+      >
+        <Typography
+          sx={{
+            fontWeight: "500",
+            fontSize: "1.6rem",
+            color: "var(--white-text-color)",
+          }}
+        >
+          Phí vận chuyển
+        </Typography>
+        <Typography
+          sx={{
+            fontWeight: "500",
+            fontSize: "1.6rem",
+            color: "var(--white-text-color)",
+          }}
+        >
+          {formatMoney(30000)} VNĐ
+        </Typography>
+      </div>
+      <Divider
+        sx={{ marginTop: "2rem", marginBottom: "2rem", backgroundColor: "var(--white-text-color)" }}
+      />
       <div className="d-flex justify-content-between align-items-center">
         <Typography
           sx={{
             fontWeight: "500",
-            fontSize: "1.8rem",
+            fontSize: "1.6rem",
             color: "var(--white-text-color)",
           }}
         >
-          Tổng tiền
+          Tổng thanh toán
         </Typography>
         <Typography
           sx={{
@@ -320,7 +370,7 @@ const PaymentBox = ({ totalQuantity, totalPrice }) => {
             color: "var(--white-text-color)",
           }}
         >
-          {formatMoney(totalPrice)} VNĐ
+          {formatMoney(totalPrice + 30000)} VNĐ
         </Typography>
       </div>
       <Button

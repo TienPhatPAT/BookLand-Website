@@ -2,7 +2,7 @@ import classes from "./TypeItem.module.scss";
 import Image from "../../../../components/Image";
 import { Link } from "react-router-dom";
 
-const TypeItem = ({ ten, img, _id }) => {
+const TypeItem = ({ ten, img, _id = "" }) => {
   return (
     <Image className={classes.background} url={img}>
       <Link to={"/type/" + _id}>

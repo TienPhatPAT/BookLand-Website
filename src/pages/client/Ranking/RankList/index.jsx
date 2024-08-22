@@ -44,7 +44,7 @@ const RankList = ({ bookList, setCurrentLabel, newLabel }) => {
                   {book.ten}
                 </Typography>
               </Link>
-              {/* <StarBar starCount={book.__v}></StarBar> */}
+              <StarBar starCount={4.5}></StarBar>
             </div>
             <div className={clsx(classes.author, "col-2 d-flex justify-content-center")}>
               <Typography

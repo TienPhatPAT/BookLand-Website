@@ -9,7 +9,7 @@ const BookList = ({ heading = "", bookList = [] }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 7,
     slidesToScroll: 5,
   };
   return (
