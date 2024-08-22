@@ -85,12 +85,6 @@ const Account = () => {
                   label="Tài khoản và bảo mật"
                   {...a11yProps(1)}
                 />
-                <Tab
-                  sx={tabItemStyle}
-                  className="tab-pane-item"
-                  label="Tài khoản liên kết"
-                  {...a11yProps(2)}
-                />
               </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
@@ -98,9 +92,6 @@ const Account = () => {
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
               <Security />
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-              <LinkedAccounts />
             </CustomTabPanel>
           </Box>
         </div>

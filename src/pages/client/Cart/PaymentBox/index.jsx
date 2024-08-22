@@ -249,14 +249,12 @@ const PaymentBox = ({ totalQuantity, totalPrice }) => {
     }
 
     setOrderSuccess(true);
-    localStorage.removeItem("cart");
-    setTimeout(() => {
-      navigate("/billing"); // Chuyển hướng sau khi đặt hàng thành công
-    }, 1000); // Thay đổi độ trễ nếu cần
   };
 
   const handleCloseSuccessPopup = () => {
     setOrderSuccess(false);
+    localStorage.removeItem("cart");
+    window.location.reload();
   };
 
   return (

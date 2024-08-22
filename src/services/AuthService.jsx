@@ -1,4 +1,4 @@
-const tokenKey = "authToken";
+const tokenKey = "token";
 
 // Lưu token vào localStorage
 export function setToken(token) {

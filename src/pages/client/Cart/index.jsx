@@ -16,7 +16,7 @@ const Cart = () => {
   useEffect(() => {
     // resetCart();
     console.log(getIdCartList());
-    getIdCartList().map((cartInfor) => {
+    getIdCartList()?.map((cartInfor) => {
       fetchApi(getApiEnv() + "/Sach/" + cartInfor.id).then((data, index) => {
         setCartList((prev) => prev.concat({ ...data?.data, quantity: cartInfor.quantity }));
         setTotalPrice((prev) => prev + cartInfor.quantity * data?.data.gia);

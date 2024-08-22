@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   TextField,
@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
 
 const Security = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,8 +19,9 @@ const Security = () => {
 
   const handleClickShowPassword = () => setShowPassword((prev) => !prev);
   const handleClickShowNewPassword = () => setShowNewPassword((prev) => !prev);
-  const handleClickShowConfirmPassword = () =>
-    setShowConfirmPassword((prev) => !prev);
+  const handleClickShowConfirmPassword = () => setShowConfirmPassword((prev) => !prev);
+
+  const navigator = useNavigate();
 
   return (
     <div
@@ -228,7 +230,11 @@ const Security = () => {
               marginLeft: "8px",
               backgroundColor: "#a259ff",
             }}
-            onClick={() => alert("Đăng xuất")}
+            onClick={() => {
+              navigator("/home");
+              localStorage.removeItem("token");
+              window.location.reload();
+            }}
           >
             Đăng Xuất
           </Button>

@@ -5,8 +5,10 @@ import lightIcon from "../../assets/icons/lights.svg";
 import SidebarItem from "./SidebarItem";
 import * as Icon from "../Icon";
 import SidebarLine from "./SidebarLine";
+import { isAuthenticated } from "../../services/AuthService";
 
 const Sidebar = () => {
+  const isLogin = isAuthenticated();
   return (
     <>
       <div className={clsx(classes.sidebar, classes.dummy)}></div>
@@ -118,18 +120,20 @@ const Sidebar = () => {
           }
           to="/privacy"
         />
-        <SidebarItem
-          label="Cài đặt"
-          icon={
-            <Icon.SettingIcon
-              type="light"
-              height="2.2rem"
-              width="2.2rem"
-              color="var(--sidebar-text-color)"
-            />
-          }
-          to="/setting"
-        />
+        {isLogin && (
+          <SidebarItem
+            label="Cài đặt"
+            icon={
+              <Icon.SettingIcon
+                type="light"
+                height="2.2rem"
+                width="2.2rem"
+                color="var(--sidebar-text-color)"
+              />
+            }
+            to="/setting"
+          />
+        )}
       </div>
     </>
   );

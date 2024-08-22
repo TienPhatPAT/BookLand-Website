@@ -12,6 +12,7 @@ import { useTheme } from "@mui/material/styles";
 // import Select from "@mui/material/Select";
 // import Chip from "@mui/material/Chip";
 import { Badge, Button } from "@mui/material";
+import TopSearchBox from "./TopSearchBox";
 import SuggestSearch from "./SuggestSearch";
 import { fetchApi, getApiEnv } from "../../utils/api";
 import AdvanceSearch from "./AdvanceSearch";
@@ -115,6 +116,8 @@ const Header = ({
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchText]);
+
+  console.log(suggestList, "kien");
 
   const handleChange = (event) => {
     const {
@@ -224,6 +227,16 @@ const Header = ({
                 />
               </svg>
             </Button>
+            {isShowSearchBox && searchText === "" && !isOpenAdvance && (
+              <TopSearchBox
+                suggestSearch={suggestSearch}
+                setSuggestSearch={setSuggestSearch}
+                changeSearchTextHandle={changeSearchTextHandle}
+                setSearchText={setSearchText}
+                searchText={searchText}
+                searchRef={searchRef}
+              />
+            )}
             {isShowSearchBox && searchText !== "" && !isOpenAdvance && (
               <SuggestSearch
                 suggestSearch={suggestSearch}

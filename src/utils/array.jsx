@@ -16,7 +16,7 @@ export function groupResultsByMatchCount(results, searchString) {
   // Lặp qua từng phần tử trong mảng results và nhóm chúng
   results.forEach((item) => {
     // console.log(item);
-    const itemText = item.text.toLowerCase();
+    const itemText = item.ten.toLowerCase();
     // Đếm số từ trùng khớp
     const matchCount = searchWords.reduce((count, word) => {
       if (itemText.includes(word)) {
