@@ -78,7 +78,7 @@ const BookDetail = () => {
       }}
       className={classes.bookDetailWrapper}
     >
-      <BreadcrumbBar path={[{ label: book.name, url: "" }]} />
+      <BreadcrumbBar path={[{ label: book.ten, url: "" }]} />
       <div className={clsx(classes.bookDetail, "d-flex")}>
         <div className={clsx(classes.cover, "col-3")}>
           <Image url={book.img}>
@@ -87,7 +87,7 @@ const BookDetail = () => {
         </div>
         <div className={clsx(classes.infoBook, "col-9")}>
           <div className={classes.nameBookWrapper}>
-            <h1 className={classes.name}>{book.name}</h1>
+            <h1 className={classes.name}>{book.ten}</h1>
             <span className={classes.recommendedLabel}>Được đề xuất</span>
           </div>
 
@@ -182,7 +182,7 @@ const BookDetail = () => {
             </Button>
           </div>
           <div className={classes.book_description}>
-            {isShow ? <p>{book.description}</p> : <p>{book.mota.substring(0, 100)}...</p>}
+            {isShow ? <p>{book.mota}</p> : <p>{book.mota.substring(0, 100)}...</p>}
             <button onClick={handleClick} className={classes.more_info}>
               {isShow ? "Thu gọn" : "Xem thêm"}
             </button>
