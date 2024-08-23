@@ -2,13 +2,15 @@ import clsx from "clsx";
 import classes from "./Information.module.scss";
 import TextField from "@mui/material/TextField";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
+import { fetchApi, getApiEnv } from "../../../../utils/api";
 
 function Information() {
   const [value, setValue] = React.useState(dayjs("2024-6-8"));
+  const [profile, setProfile] = useState(null);
   const [selectedFile, setSelectedFile] = React.useState(null);
 
   const inputStyle = {
@@ -54,6 +56,13 @@ function Information() {
     },
   };
 
+  useEffect(() => {
+    const id = localStorage.getItem("idUser");
+    fetchApi(`${getApiEnv()}/nguoidung/${id}`).then((data) => {
+      setProfile(data?.data);
+    });
+  }, []);
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -68,69 +77,25 @@ function Information() {
           <TextField
             sx={inputStyle}
             disabled
-            label="Tên đăng nhập"
-            defaultValue="namdpps35870"
+            label="Email"
+            value={profile?.email || ""}
             className="fullWidth"
           />
           <TextField
             sx={inputStyle}
             disabled
             label="ID người dùng"
-            defaultValue="9016363"
+            value={profile?._id || ""}
             className="fullWidth"
           />
           <TextField
             sx={inputStyle}
             label="Họ và tên"
-            defaultValue="Do Phuong Nam (FPL HCM)"
+            value="Do Phuong Nam (FPL HCM)"
             className="fullWidth"
           />
-          <div className={clsx(classes["info_input_little"], "d-flex gap-20")}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateTimePicker
-                label="Ngày sinh"
-                value={value}
-                sx={inputStyle}
-                onChange={(newValue) => setValue(newValue)}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-            <TextField
-              sx={inputStyle}
-              select
-              SelectProps={{
-                native: true,
-              }}
-              label="Giới tính"
-              defaultValue="Khác"
-            >
-              <option
-                value="Nam"
-                style={{ backgroundColor: "#000", color: "#fff" }}
-              >
-                Nam
-              </option>
-              <option
-                value="Nữ"
-                style={{ backgroundColor: "#000", color: "#fff" }}
-              >
-                Nữ
-              </option>
-              <option
-                value="Khác"
-                style={{ backgroundColor: "#000", color: "#fff" }}
-              >
-                Khác
-              </option>
-            </TextField>
-          </div>
           <div className={clsx(classes["info_manager-button"])}>
-            <button
-              className={clsx(
-                classes["info_button"],
-                classes["info_button_active"]
-              )}
-            >
+            <button className={clsx(classes["info_button"], classes["info_button_active"])}>
               Cập nhật
             </button>
             <button className={clsx(classes["info_button"])}>Hủy</button>
@@ -139,17 +104,9 @@ function Information() {
       </div>
       <div className={classes["info_right"]}>
         {selectedFile ? (
-          <img
-            src={selectedFile}
-            alt="Avatar"
-            className={classes["info_avatar"]}
-          />
+          <img src={selectedFile} alt="Avatar" className={classes["info_avatar"]} />
         ) : (
-          <img
-            src="https://symbols.vn/wp-content/uploads/2022/01/Hinh-Anh-Luffy-Hoi-Nho-Dep-cute.jpg"
-            alt="Avatar"
-            className={classes["info_avatar"]}
-          />
+          <img src={profile?.avt} alt="Avatar" className={classes["info_avatar"]} />
         )}
         <input
           type="file"
@@ -161,7 +118,7 @@ function Information() {
         <label htmlFor="upload-photo">
           <button
             className={clsx(classes["info_button_active"])}
-            onClick={() => document.getElementById('upload-photo').click()}
+            onClick={() => document.getElementById("upload-photo").click()}
           >
             Thay ảnh
           </button>

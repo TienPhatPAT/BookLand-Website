@@ -5,11 +5,16 @@ import PropTypes from "prop-types";
 import BreadcrumbBar from "../../../components/BreadcrumbBar";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { fetchApi, getApiEnv } from "../../../utils/api";
 
 const Billing = () => {
   const [value, setValue] = useState(0);
   const [orderList, setOrderList] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchApi(`${getApiEnv()}/sachyeuthich`);
+  }, []);
 
   function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -155,18 +160,8 @@ const Billing = () => {
         }}
       >
         <Tab disableRipple label="Tất cả" sx={tabItemStyle} {...a11yProps(0)} />
-        <Tab
-          disableRipple
-          label="Đang xử lý"
-          sx={tabItemStyle}
-          {...a11yProps(1)}
-        />
-        <Tab
-          disableRipple
-          label="Hoàn thành"
-          sx={tabItemStyle}
-          {...a11yProps(2)}
-        />
+        <Tab disableRipple label="Đang xử lý" sx={tabItemStyle} {...a11yProps(1)} />
+        <Tab disableRipple label="Hoàn thành" sx={tabItemStyle} {...a11yProps(2)} />
         <Tab disableRipple label="Đã hủy" sx={tabItemStyle} {...a11yProps(3)} />
       </Tabs>
       <div className={classes.orderList}>
@@ -174,10 +169,7 @@ const Billing = () => {
           {orderList.map((order) => (
             <div
               key={order.id}
-              className={clsx(
-                classes.orderItem,
-                classes[order.status.replace(/\s+/g, "")]
-              )}
+              className={clsx(classes.orderItem, classes[order.status.replace(/\s+/g, "")])}
               onClick={() => handleViewDetails(order.id)}
             >
               <div className={classes.img}>
@@ -186,15 +178,11 @@ const Billing = () => {
               <div className={classes.info}>
                 <div className={classes.name_author}>
                   <Typography variant="h6">{order.items[0].name}</Typography>
-                  <Typography variant="body2">
-                    {order.items[0].author}
-                  </Typography>
+                  <Typography variant="body2">{order.items[0].author}</Typography>
                 </div>
                 <div className={classes.price_amount}>
                   <Typography variant="h6">{order.items[0].price}</Typography>
-                  <Typography variant="body2">
-                    {order.items[0].quantity} x
-                  </Typography>
+                  <Typography variant="body2">{order.items[0].quantity} x</Typography>
                 </div>
               </div>
               <div className={classes.more}>
@@ -213,23 +201,16 @@ const Billing = () => {
                 onClick={() => handleViewDetails(order.id)}
               >
                 <div className={classes.img}>
-                  <img
-                    src={order.items[0].imageUrl}
-                    alt={order.items[0].name}
-                  />
+                  <img src={order.items[0].imageUrl} alt={order.items[0].name} />
                 </div>
                 <div className={classes.info}>
                   <div className={classes.name_author}>
                     <Typography variant="h6">{order.items[0].name}</Typography>
-                    <Typography variant="body2">
-                      {order.items[0].author}
-                    </Typography>
+                    <Typography variant="body2">{order.items[0].author}</Typography>
                   </div>
                   <div className={classes.price_amount}>
                     <Typography variant="h6">{order.items[0].price}</Typography>
-                    <Typography variant="body2">
-                      {order.items[0].quantity} x
-                    </Typography>
+                    <Typography variant="body2">{order.items[0].quantity} x</Typography>
                   </div>
                 </div>
                 <div className={classes.more}>
@@ -248,23 +229,16 @@ const Billing = () => {
                 onClick={() => handleViewDetails(order.id)}
               >
                 <div className={classes.img}>
-                  <img
-                    src={order.items[0].imageUrl}
-                    alt={order.items[0].name}
-                  />
+                  <img src={order.items[0].imageUrl} alt={order.items[0].name} />
                 </div>
                 <div className={classes.info}>
                   <div className={classes.name_author}>
                     <Typography variant="h6">{order.items[0].name}</Typography>
-                    <Typography variant="body2">
-                      {order.items[0].author}
-                    </Typography>
+                    <Typography variant="body2">{order.items[0].author}</Typography>
                   </div>
                   <div className={classes.price_amount}>
                     <Typography variant="h6">{order.items[0].price}</Typography>
-                    <Typography variant="body2">
-                      {order.items[0].quantity} x
-                    </Typography>
+                    <Typography variant="body2">{order.items[0].quantity} x</Typography>
                   </div>
                 </div>
                 <div className={classes.more}>
@@ -283,23 +257,16 @@ const Billing = () => {
                 onClick={() => handleViewDetails(order.id)}
               >
                 <div className={classes.img}>
-                  <img
-                    src={order.items[0].imageUrl}
-                    alt={order.items[0].name}
-                  />
+                  <img src={order.items[0].imageUrl} alt={order.items[0].name} />
                 </div>
                 <div className={classes.info}>
                   <div className={classes.name_author}>
                     <Typography variant="h6">{order.items[0].name}</Typography>
-                    <Typography variant="body2">
-                      {order.items[0].author}
-                    </Typography>
+                    <Typography variant="body2">{order.items[0].author}</Typography>
                   </div>
                   <div className={classes.price_amount}>
                     <Typography variant="h6">{order.items[0].price}</Typography>
-                    <Typography variant="body2">
-                      {order.items[0].quantity} x
-                    </Typography>
+                    <Typography variant="body2">{order.items[0].quantity} x</Typography>
                   </div>
                 </div>
                 <div className={classes.more}>

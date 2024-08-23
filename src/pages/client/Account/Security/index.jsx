@@ -233,6 +233,7 @@ const Security = () => {
             onClick={() => {
               navigator("/home");
               localStorage.removeItem("token");
+              localStorage.removeItem("idUser");
               window.location.reload();
             }}
           >

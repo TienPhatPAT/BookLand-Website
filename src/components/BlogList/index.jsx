@@ -58,9 +58,6 @@ const BlogList = ({ heading = "", blogList = [] }) => {
                     >
                       {blog.tieude}
                     </Typography>
-                    <Typography sx={{ textDecoration: "none", fontSize: 12 }}>
-                      {blog.mota}
-                    </Typography>
                   </CardContent>
                 </Card>
               </Box>

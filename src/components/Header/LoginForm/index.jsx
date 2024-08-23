@@ -83,6 +83,7 @@ const LoginForm = ({ setLoginBox, setSignUpBox }) => {
         alert("Đăng nhập thành công:");
         // Lưu token vào localStorage
         localStorage.setItem("token", data.token);
+        localStorage.setItem("idUser", data.id_nguoidung);
       } else {
         // Đăng nhập thất bại
         const errorData = await response.json();
