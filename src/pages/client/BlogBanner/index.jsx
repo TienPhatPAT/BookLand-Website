@@ -83,7 +83,6 @@ const BlogBanner = () => {
                   >
                     {item.tieude}
                   </Typography>
-                  <Typography sx={{ textDecoration: "none", fontSize: 12 }}>{item.mota}</Typography>
                 </CardContent>
               </Card>
             ))}

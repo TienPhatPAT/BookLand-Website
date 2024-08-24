@@ -28,7 +28,7 @@ const GridBookList = ({ bookList = [] }) => {
               cover={book.img}
               name={book.ten}
               label={book.gia}
-              id={book._id}
+              id={book.id}
               isMargin={false}
             />
           </Box>

@@ -28,8 +28,10 @@ const BookDetail = () => {
   const { id } = useParams();
   const [isShow, setInfo] = useState(false);
   const [book, setBook] = useState(null);
+  const [isFavorite, setFavorite] = useState(false);
 
   useEffect(() => {
+    const userId = localStorage.getItem("idUser");
     fetchApi(getApiEnv() + "/Sach/" + id)
       .then((data) => {
         const mockReviews = [
@@ -53,9 +55,42 @@ const BookDetail = () => {
         });
       })
       .catch((error) => console.error("Error fetching Book data:", error));
+    fetchApi(getApiEnv() + `/sachyeuthich/${userId}`).then((data) => {
+      setFavorite(data?.data.map((book) => book.id_sach.id).includes(id));
+    });
   }, [id]);
 
-  console.log(book, "book");
+  const handleFavorite = async (id) => {
+    const idUser = localStorage.getItem("idUser");
+    try {
+      const response = await fetch(getApiEnv() + "/sachyeuthich", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id_nguoidung: idUser,
+          id_sach: id,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (isFavorite) {
+          alert("Đã bỏ sách yêu thích");
+        } else {
+          alert("Đã thêm sách yêu thích");
+        }
+        window.location.reload();
+      } else {
+        // Đăng nhập thất bại
+        const errorData = await response.json();
+        alert("Thêm sách thất bại: " + errorData.message);
+      }
+    } catch (error) {
+      alert("Lỗi khi gửi yêu cầu : " + error.message);
+    }
+  };
 
   const handleClick = () => setInfo(!isShow);
 
@@ -122,7 +157,7 @@ const BookDetail = () => {
                 <h4>Thể loại</h4>
                 <div>
                   {book.theloaisach.map((t) => (
-                    <TypePath key={t.id} id={t.id} name={t.ten} />
+                    <TypePath key={t._id} id={t._id} name={t.ten} />
                   ))}
                 </div>
               </div>
@@ -173,17 +208,17 @@ const BookDetail = () => {
                 width: "4.3rem",
                 minWidth: "unset",
                 borderRadius: "100px",
-                backgroundColor: "rgba(255, 255, 255, .05)",
+                backgroundColor: isFavorite ? "var(--primary-color)" : "rgba(255, 255, 255, .05)",
               }}
               disableRipple
               className={classes.icon}
-              onClick={() => {}}
+              onClick={() => handleFavorite(book._id)}
             >
               <Icon.HeartIcon
                 width={20}
                 height="auto"
                 type="light"
-                color="var(--gray-text-color)"
+                color={isFavorite ? "var(--white-text-color)" : "var(--gray-text-color)"}
               />
             </Button>
           </div>

@@ -61,14 +61,16 @@ const FavoriteBook = () => {
       const newData = data?.data.filter((book) =>
         book.type.some((t) => t._id === event.target.value)
       );
+
       setBookList(newData);
       setFullBookList(newData);
     });
   };
 
   useEffect(() => {
-    fetchApi(getApiEnv() + "/Sach").then((data) => {
-      const newData = data?.data.filter((book) => book.theloaisach.some((t) => t.id === id));
+    const userId = localStorage.getItem("idUser");
+    fetchApi(getApiEnv() + `/sachyeuthich/${userId}`).then((data) => {
+      const newData = data?.data.map((book) => book.id_sach);
       setBookList(newData);
       setFullBookList(newData);
     });
