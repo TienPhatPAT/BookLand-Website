@@ -2,21 +2,24 @@ import { resetCart } from "../../../../services/Cart";
 import CartListItem from "../CartListItem";
 import classes from "./CartList.module.scss";
 
-const CartList = ({ cartList, setTotalPrice, totalPrice }) => {
+const CartList = ({ cartList = [], setTotalPrice, totalPrice }) => {
   // resetCart();
   // console.log(cartList);
+  console.log(cartList);
+
   return (
     <div className={classes.cartList}>
-      {cartList.map((item, index) => {
-        return (
-          <CartListItem
-            key={index}
-            setTotalPrice={setTotalPrice}
-            totalPrice={totalPrice}
-            {...item}
-          />
-        );
-      })}
+      {cartList.length !== 0 &&
+        cartList?.map((item, index) => {
+          return (
+            <CartListItem
+              key={index}
+              setTotalPrice={setTotalPrice}
+              totalPrice={totalPrice}
+              {...item}
+            />
+          );
+        })}
     </div>
   );
 };

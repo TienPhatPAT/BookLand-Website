@@ -3,7 +3,7 @@ import BreadcrumbBar from "../../../components/BreadcrumbBar";
 import classes from "./CartStyle.module.scss";
 import { useEffect, useState } from "react";
 import { fetchApi, getApiEnv } from "../../../utils/api";
-import { getIdCartList, resetCart } from "../../../services/Cart";
+import { getIdCartList } from "../../../services/Cart";
 import CartList from "./CartList";
 import * as Icon from "../../../components/Icon";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,6 @@ const Cart = () => {
   const navigate = useNavigate();
   useEffect(() => {
     // resetCart();
-    console.log(getIdCartList());
     getIdCartList()?.map((cartInfor) => {
       fetchApi(getApiEnv() + "/Sach/" + cartInfor.id).then((data, index) => {
         setCartList((prev) => prev.concat({ ...data?.data, quantity: cartInfor.quantity }));

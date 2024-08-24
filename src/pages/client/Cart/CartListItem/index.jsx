@@ -13,6 +13,8 @@ import { formatMoney } from "../../../../utils/string";
 import { Link } from "react-router-dom";
 
 const CartListItem = (props) => {
+  console.log(props, "propspropsprops");
+
   const [quantity, setQuantity] = useState(props.quantity);
   const [isShow, setIsShow] = useState(true);
 
@@ -59,8 +61,8 @@ const CartListItem = (props) => {
     <>
       {isShow && (
         <div className={classes.cartList}>
-          <Link to={"/book/" + props._id}>
-            <Image url={props.img} className={classes.cover}>
+          <Link to={"/book/" + props?._id}>
+            <Image url={props?.img} className={classes.cover}>
               <div></div>
             </Image>
           </Link>
@@ -75,7 +77,7 @@ const CartListItem = (props) => {
                   maxWidth: "100%",
                 }}
               >
-                <Link to={"/book/" + props._id}>{props.ten}</Link>
+                <Link to={"/book/" + props?._id}>{props?.ten}</Link>
               </Typography>
               <Typography
                 sx={{
@@ -84,12 +86,12 @@ const CartListItem = (props) => {
                   fontWeight: "400",
                 }}
               >
-                {props.tacgia}
+                {props?.tacgia?.ten}
               </Typography>
               <div className={classes.quantity}>
                 <Button
                   sx={quantityBtnStyle}
-                  onClick={() => decreaseCartHandle(props._id, props.gia)}
+                  onClick={() => decreaseCartHandle(props?._id, props?.gia)}
                   disabled={quantity === 1}
                 >
                   <Icon.PlusIcon color="var(--gray-text-color)" />
@@ -106,7 +108,7 @@ const CartListItem = (props) => {
                 </Typography>
                 <Button
                   sx={quantityBtnStyle}
-                  onClick={() => increaseCartHandle(props._id, props.gia)}
+                  onClick={() => increaseCartHandle(props?._id, props?.gia)}
                 >
                   <Icon.MinusIcon color="var(--gray-text-color)" />
                 </Button>
@@ -162,12 +164,12 @@ const CartListItem = (props) => {
                 }}
                 className={classes.price}
               >
-                {formatMoney(props.gia)} VNĐ
+                {formatMoney(props?.gia)} VNĐ
               </Typography>
             </div>
           </div>
           <Button
-            onClick={() => removeCartHandle(props._id)}
+            onClick={() => removeCartHandle(props?._id)}
             className={classes.deleteBtn}
             sx={{
               minWidth: "unset",

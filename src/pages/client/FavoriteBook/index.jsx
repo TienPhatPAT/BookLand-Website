@@ -63,7 +63,6 @@ const FavoriteBook = () => {
       );
 
       setBookList(newData);
-      setFullBookList(newData);
     });
   };
 
@@ -72,7 +71,6 @@ const FavoriteBook = () => {
     fetchApi(getApiEnv() + `/sachyeuthich/${userId}`).then((data) => {
       const newData = data?.data.map((book) => book.id_sach);
       setBookList(newData);
-      setFullBookList(newData);
     });
 
     fetchApi(getApiEnv() + "/TheLoai").then((data) => {

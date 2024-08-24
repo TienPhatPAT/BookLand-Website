@@ -120,7 +120,7 @@ const TacgiaDetail = () => {
                 <h4>Thể loại</h4>
                 <div>
                   {book.theloaisach.map((t) => (
-                    <TypePath key={t.id} id={t.id} name={t.ten} />
+                    <TypePath key={t._id} id={t._id} name={t.ten} />
                   ))}
                 </div>
               </div>
