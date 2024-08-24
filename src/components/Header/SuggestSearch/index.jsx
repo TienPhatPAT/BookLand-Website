@@ -90,7 +90,7 @@ const SuggestSearch = ({
                   color: "var(--light-gray-text-color)",
                   fontSize: "1.4rem",
                   fontWeight: "400",
-
+                  textAlign: "left !important",
                   ".highlight": {
                     color: "var(--gray-text-color)",
                     display: "inline-block",
@@ -118,7 +118,7 @@ const SuggestSearch = ({
             textTransform: "unset",
             padding: "1.2rem 2rem 1rem 2.4rem",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "left",
           }}
         >
           <Typography
@@ -126,7 +126,7 @@ const SuggestSearch = ({
               color: "var(--light-gray-text-color)",
               fontSize: "1.4rem",
               fontWeight: "400",
-
+              textAlign: "left !important",
               ".highlight": {
                 color: "var(--gray-text-color)",
                 display: "inline-block",

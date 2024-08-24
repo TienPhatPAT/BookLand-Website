@@ -21,8 +21,10 @@ import StarBar from "../../../components/StarBar";
 import * as Icon from "../../../components/Icon";
 import { increaseQuantityById } from "../../../services/Cart";
 import TypePath from "../Type/TypePath";
+import { isAuthenticated } from "../../../services/AuthService";
 
 const BookDetail = () => {
+  const isLogin = isAuthenticated();
   const { id } = useParams();
   const [isShow, setInfo] = useState(false);
   const [book, setBook] = useState(null);
@@ -144,8 +146,12 @@ const BookDetail = () => {
               disableRipple
               className={classes.addBtn}
               onClick={() => {
-                location.reload();
-                increaseQuantityById(book._id);
+                if (isLogin) {
+                  location.reload();
+                  increaseQuantityById(book._id);
+                } else {
+                  alert("Vui lòng đăng nhập trước khi thêm sản phẩm");
+                }
               }}
             >
               <Icon.CartBagIcon type="light" color="var(--white-text-color)" />
