@@ -289,7 +289,7 @@ const PaymentBox = ({ totalQuantity, totalPrice }) => {
             },
           }}
         >
-          <FormControlLabel value="momo" control={<Radio />} label="Thanh toán Momo" />
+          {/* <FormControlLabel value="momo" control={<Radio />} label="Thanh toán Momo" /> */}
           <FormControlLabel value="cod" control={<Radio />} label="Thanh toán khi nhận hàng" />
         </RadioGroup>
       </FormControl>

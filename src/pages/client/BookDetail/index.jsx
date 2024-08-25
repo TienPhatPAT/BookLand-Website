@@ -139,9 +139,9 @@ const BookDetail = () => {
             <div className="d-flex justify-content-between w-100">
               <div className="d-flex flex-column justify-content-start w-100">
                 <h4>Tác giả</h4>
-                {book.author ? (
-                  <RouterLink to={`/author/${book.author.id}`} className={classes.user_name}>
-                    {book.author.name}
+                {book.tacgia ? (
+                  <RouterLink to={`/author/${book.tacgia._id}`} className={classes.user_name}>
+                    {book.tacgia.ten}
                   </RouterLink>
                 ) : (
                   <span>Chưa có thông tin tác giả</span>

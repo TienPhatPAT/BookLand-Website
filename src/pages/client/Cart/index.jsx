@@ -35,27 +35,6 @@ const Cart = () => {
         <div className={classes.breadcrumb}>
           <BreadcrumbBar path={[{ label: "Sách của bạn", url: "" }]}></BreadcrumbBar>
         </div>
-        <Button
-          disableRipple
-          disableFocusRipple
-          sx={{
-            padding: "1rem 2rem",
-            color: "var(--gray-text-color)",
-            fontSize: "1.4rem",
-            fontWeight: "400",
-            display: "flex",
-            alignItems: "center",
-            border: ".1rem solid rgba(var(--gray-text-color-rgb), .3)",
-            gap: "1rem",
-            borderRadius: "100px",
-            textTransform: "none",
-            marginBottom: "3rem",
-          }}
-          onClick={() => navigate("/favorite-book")}
-        >
-          <Icon.HeartIcon width={16} type="light" />
-          Sách yêu thích (0)
-        </Button>
         <div className={classes.cartContent}>
           <div className={classes.cartContentBookList}>
             <CartList

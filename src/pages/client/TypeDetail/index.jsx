@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { fetchApi, getApiEnv } from "../../../utils/api";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BreadcrumbBar from "../../../components/BreadcrumbBar";
 import { useNavigate } from "react-router-dom";
@@ -191,7 +191,7 @@ const TypeDetail = () => {
                 },
               }}
             >
-              <MenuItem value="tat-ca">Tất cả</MenuItem>
+              {/* <MenuItem value="tat-ca">Tất cả</MenuItem> */}
               {typeList.map((item, index) => {
                 return (
                   <MenuItem key={index} value={item._id}>

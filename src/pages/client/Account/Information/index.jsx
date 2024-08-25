@@ -1,17 +1,13 @@
 import clsx from "clsx";
 import classes from "./Information.module.scss";
 import TextField from "@mui/material/TextField";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import React, { useEffect, useState } from "react";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
 import { fetchApi, getApiEnv } from "../../../../utils/api";
 
 function Information() {
-  const [value, setValue] = React.useState(dayjs("2024-6-8"));
   const [profile, setProfile] = useState(null);
   const [selectedFile, setSelectedFile] = React.useState(null);
+  const [ten, setTen] = useState("");
 
   const inputStyle = {
     backgroundColor: "#2c2c2c",
@@ -60,6 +56,7 @@ function Information() {
     const id = localStorage.getItem("idUser");
     fetchApi(`${getApiEnv()}/nguoidung/${id}`).then((data) => {
       setProfile(data?.data);
+      setTen(data?.data?.ten);
     });
   }, []);
 
@@ -70,10 +67,35 @@ function Information() {
     }
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const id = localStorage.getItem("idUser");
+    try {
+      const response = await fetch(getApiEnv() + `/nguoidung/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ten,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Câp nhật thành công:");
+      } else {
+        const errorData = await response.json();
+        alert("Câp nhật thất bại: " + errorData.message);
+      }
+    } catch (error) {
+      alert("Lỗi khi gửi yêu cầu: " + error.message);
+    }
+  };
+
   return (
     <div className={clsx(classes["info_container"], "d-flex w-100")}>
       <div className={classes["info_information-container"]}>
-        <div className={clsx(classes["info_list-input"])}>
+        <form className={clsx(classes["info_list-input"])} onSubmit={handleSubmit}>
           <TextField
             sx={inputStyle}
             disabled
@@ -91,16 +113,33 @@ function Information() {
           <TextField
             sx={inputStyle}
             label="Họ và tên"
-            value="Do Phuong Nam (FPL HCM)"
+            // defaultValue={profile?.ten || ""}
+            value={ten}
+            onChange={(e) => setTen(e.target.value)}
             className="fullWidth"
           />
           <div className={clsx(classes["info_manager-button"])}>
-            <button className={clsx(classes["info_button"], classes["info_button_active"])}>
+            <button
+              type="submit"
+              style={{
+                backgroundColor: "#a259ff",
+                borderRadius: "8px",
+              }}
+              className={clsx(classes["info_button"], classes["info_button_active"])}
+            >
               Cập nhật
             </button>
-            <button className={clsx(classes["info_button"])}>Hủy</button>
+            <button
+              type="button"
+              onClick={() => {
+                window.location.reload();
+              }}
+              className={clsx(classes["info_button"])}
+            >
+              Hủy
+            </button>
           </div>
-        </div>
+        </form>
       </div>
       <div className={classes["info_right"]}>
         {selectedFile ? (

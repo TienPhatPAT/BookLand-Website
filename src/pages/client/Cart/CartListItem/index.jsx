@@ -113,36 +113,6 @@ const CartListItem = (props) => {
                   <Icon.MinusIcon color="var(--gray-text-color)" />
                 </Button>
               </div>
-              <Button
-                sx={{
-                  padding: "unset",
-                  textTransform: "none",
-                  marginTop: "1.2rem",
-                  padding: ".4rem 1rem .4rem 0",
-                  "&:hover": {
-                    backgroundColor: "transparent",
-                  },
-                }}
-                disableRipple
-              >
-                <Typography
-                  sx={{
-                    color: "var(--light-gray-text-color)",
-                    fontSize: "1.2rem",
-                    fontWeight: "400",
-                    display: "flex",
-                    gap: ".4rem",
-                    alignItems: "center",
-                  }}
-                >
-                  <Icon.HeartIcon
-                    color="var(--light-gray-text-color)"
-                    type="light"
-                    height="1.4rem"
-                  />{" "}
-                  Add to favorite
-                </Typography>
-              </Button>
             </div>
             <div className={clsx(classes.priceWrapper, "d-flex align-items-center")}>
               <Typography
