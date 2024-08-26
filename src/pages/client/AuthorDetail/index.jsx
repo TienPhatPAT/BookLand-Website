@@ -17,19 +17,16 @@ const AuthorDetail = () => {
     const fetchData = async () => {
       try {
         const authorData = await fetchApi(getApiEnv() + "/tacgia/" + id);
-        console.log("Author Data:", authorData?.data); // Kiểm tra dữ liệu tác giả
 
         const booksData = await fetchApi(getApiEnv() + "/Sach");
-        console.log("Books Data:", booksData?.data); // Kiểm tra dữ liệu sách
 
         // Lọc sách theo authorId
         const filteredBooks = booksData?.data.filter(
           (book) => book.tacgia && book.tacgia._id === id
         );
-        console.log("Filtered Books:", filteredBooks); // Kiểm tra dữ liệu sách đã lọc
 
         setAuthor(authorData?.data);
-        setBooks(filteredBooks?.data);
+        setBooks(filteredBooks);
       } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
       }
@@ -41,6 +38,8 @@ const AuthorDetail = () => {
   if (author === null || author === undefined) {
     return <p>Đang tải...</p>;
   }
+
+  console.log(books, "booksbooksbooks");
 
   return (
     <Container
@@ -60,6 +59,7 @@ const AuthorDetail = () => {
             sx={{
               fontSize: "1.8rem",
               fontWeight: "600",
+              marginBottom: "1rem",
             }}
             className={classes.name}
           >

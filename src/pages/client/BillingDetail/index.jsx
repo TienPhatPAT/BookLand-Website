@@ -3,12 +3,14 @@ import { Container, Typography, Box, Button } from "@mui/material";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import BreadcrumbBar from "../../../components/BreadcrumbBar";
 import classes from "./BillingDetail.module.scss";
+import { formatMoney } from "../../../utils/string";
 
 const BillingDetail = () => {
   const { orderId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { order } = location.state || {}; // Nhận dữ liệu từ state
+  const { order } = location.state || {};
+  // Nhận dữ liệu từ state
 
   if (!order) {
     return (
@@ -18,50 +20,51 @@ const BillingDetail = () => {
     );
   }
 
-  // Thông tin người mua cố định
-  const buyer = {
-    name: "Nguyễn Văn A",
-    email: "nguyenvana@example.com",
-    phone: "0901234567",
-    address: "123 Đường ABC, Quận 1, TP. HCM",
-    avatarUrl: "https://avatarfiles.alphacoders.com/182/182133.jpg",
-  };
-
   // Tính toán tổng số tiền
   const calculateTotalAmount = () => {
-    return order.items?.reduce(
-      (total, item) => total + parseFloat(item.price.replace(/[^0-9]/g, "")) * item.quantity,
-      0
-    );
+    return order.items.reduce((total, item) => {
+      console.log(total, "1", item.book, "2");
+      return total + parseFloat(item.book.gia) * item.quantity;
+    }, 0);
   };
 
   // Xác định trạng thái thanh toán
-  const paymentStatus = order.paid ? "Đã thanh toán" : "Chưa thanh toán";
-  const paymentStatusClass = order.paid
-    ? classes.paymentStatusValue
-    : `${classes.paymentStatusValue} ${classes.unpaid}`;
+
+  const paymentStatus = {
+    cancelled: "Đã huỷ",
+    pending: "Đang xử lý",
+    completed: "Hoàn thành",
+  };
+  const paymentStatusClass =
+    order.status === "completed"
+      ? classes.paymentStatusValue
+      : `${classes.paymentStatusValue} ${classes.unpaid}`;
 
   const renderOrderInfo = () => (
     <Box className={classes.orderInfo}>
       <Typography variant="h6" className={classes.infoTitle}>
-        Mã đơn hàng: {order.id}
+        Mã đơn hàng: {order._id}
       </Typography>
       <Typography className={classes.infoText}>
-        Ngày đặt hàng: {new Date(order.date).toLocaleDateString()}
+        Ngày đặt hàng: {new Date(order.createdAt).toLocaleDateString()}
       </Typography>
-      <Typography className={classes.infoText}>Trạng thái: {order.status}</Typography>
+      <Typography className={classes.infoText} style={{ textTransform: "capitalize" }}>
+        Trạng thái: {order.status}
+      </Typography>
     </Box>
   );
 
   const renderProductItem = (item) => (
-    <Box key={item.name} className={classes.productItem}>
-      <img src={item.imageUrl} alt={item.name} />
+    <Box key={item.book.id} className={classes.productItem}>
+      <img src={item.book.img} alt={item.book.ten} />
       <Box className={classes.productInfo}>
         <Typography variant="h6" className={classes.productName}>
-          {item.name}
+          {item.book.ten}
         </Typography>
-        <Typography className={classes.productAuthor}>Tác giả: {item.author}</Typography>
-        <Typography className={classes.productPrice}>Giá: {item.price}</Typography>
+        <Typography className={classes.productAuthor}>Tác giả: {`author`}</Typography>
+        <Typography className={classes.productPrice}>
+          Giá: {`${formatMoney(item.book.gia)} VNĐ`}
+        </Typography>
         <Typography className={classes.productQuantity}>Số lượng: {item.quantity}</Typography>
       </Box>
     </Box>
@@ -74,7 +77,9 @@ const BillingDetail = () => {
       </Typography>
       <Box className={classes.paymentStatus}>
         <Typography className={classes.paymentStatusText}>Trạng thái thanh toán:</Typography>
-        <Typography className={paymentStatusClass}>{paymentStatus}</Typography>
+        <Typography className={paymentStatusClass} style={{ textTransform: "capitalize" }}>
+          {paymentStatus[order.status]}
+        </Typography>
       </Box>
       <Box className={classes.invoiceItem}>
         <Typography className={classes.invoiceText}>Tổng tiền hàng:</Typography>
@@ -119,16 +124,28 @@ const BillingDetail = () => {
           <Typography variant="h5" className={classes.sectionTitle}>
             Danh Sách Sản Phẩm
           </Typography>
-          <Box className={classes.productList}>{order.items.map(renderProductItem)}</Box>
+          <Box className={classes.productList}>
+            {order.items.map((item) => renderProductItem(item))}
+          </Box>
           {renderInvoice()}
         </Box>
         <Box className={classes.buyerInfoContainer}>
           <Box className={classes.buyerInfo}>
-            <img src={buyer.avatarUrl} alt="Avatar" className={classes.avatar} />
-            <Typography className={classes.buyerTitle}>{buyer.name}</Typography>
-            <Typography className={classes.buyerText}>{buyer.email}</Typography>
-            <Typography className={classes.buyerText}>{buyer.phone}</Typography>
-            <Typography className={classes.buyerText}>{buyer.address}</Typography>
+            <img
+              src={order?.user?.avt || `https://avatarfiles.alphacoders.com/182/182133.jpg`}
+              alt="Avatar"
+              className={classes.avatar}
+            />
+            <Typography className={classes.buyerTitle}>
+              {order?.user?.ten || `Nguyễn Văn A`}
+            </Typography>
+            <Typography className={classes.buyerText}>
+              {order?.user?.email || `nguyenvana@gmail.com`}
+            </Typography>
+            <Typography className={classes.buyerText}>
+              {order?.user?.phone || `090 123 456 789`}
+            </Typography>
+            <Typography className={classes.buyerText}>{order?.address}</Typography>
             <Button
               className={classes.contactButton}
               onClick={() => navigate("/customer-help")} // Chuyển hướng đến trang hỗ trợ

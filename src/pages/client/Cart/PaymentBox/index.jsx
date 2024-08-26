@@ -17,6 +17,7 @@ import {
 import classes from "./PaymentBox.module.scss";
 import * as Icon from "../../../../components/Icon";
 import { formatMoney } from "../../../../utils/string";
+import { getApiEnv } from "../../../../utils/api";
 
 const UserInfoForm = ({ open, handleClose, onSave }) => {
   const [name, setName] = useState("");
@@ -229,8 +230,14 @@ const PaymentBox = ({ totalQuantity, totalPrice }) => {
   const [paymentMethod, setPaymentMethod] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const navigate = useNavigate(); // Hook cho việc điều hướng
+  const idUser = localStorage.getItem("idUser");
 
   const handleClickOpen = () => {
+    if (!paymentMethod) {
+      // Hiển thị thông báo lỗi nếu chưa chọn phương thức thanh toán
+      alert("Vui lòng chọn phương thức thanh toán!");
+      return;
+    }
     setOpen(true);
   };
 
@@ -242,17 +249,47 @@ const PaymentBox = ({ totalQuantity, totalPrice }) => {
     setUserInfo(info);
   };
 
-  const handlePlaceOrder = () => {
+  const handlePayment = async () => {
     if (!paymentMethod) {
       // Hiển thị thông báo lỗi nếu chưa chọn phương thức thanh toán
       alert("Vui lòng chọn phương thức thanh toán!");
       return;
     }
+    try {
+      const items = JSON.parse(localStorage.getItem("cart")).map((item) => {
+        return {
+          book: item.id,
+          quantity: item.quantity,
+          unit_price: 10000,
+        };
+      });
+      const response = await fetch(getApiEnv() + "/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: idUser,
+          address: userInfo.address,
+          phoneNumber: userInfo.phone,
+          shipping: 30000,
+          paymentMethod: "cash",
+          items: items,
+        }),
+      });
 
-    setOrderSuccess(true);
+      if (response.ok) {
+        setOrderSuccess(true);
+      } else {
+        const errorData = await response.json();
+        alert("Thanh toán thất bại: " + errorData.message);
+      }
+    } catch (error) {
+      alert("Lỗi khi gửi yêu cầu : " + error.message);
+    }
   };
 
-  const handleCloseSuccessPopup = () => {
+  const handleCloseSuccessPopup = async () => {
     setOrderSuccess(false);
     localStorage.removeItem("cart");
     window.location.reload();
@@ -389,10 +426,9 @@ const PaymentBox = ({ totalQuantity, totalPrice }) => {
             opacity: ".8",
           },
         }}
-        onClick={userInfo ? handlePlaceOrder : handleClickOpen}
-        disabled={!paymentMethod} // Disable if payment method is not selected
+        onClick={userInfo ? handlePayment : handleClickOpen}
       >
-        {userInfo ? (
+        {!Object.keys(userInfo || {}).length ? (
           "Đặt hàng"
         ) : (
           <>
