@@ -32,7 +32,7 @@ const BreadcrumbBar = ({ path = "" }) => {
         fontWeight: 400,
       }}
     >
-      Thư viện
+      Trang Chủ
     </Link>,
     ...pathnames.map((item, index) => {
       if (index === pathnames.length - 1) {

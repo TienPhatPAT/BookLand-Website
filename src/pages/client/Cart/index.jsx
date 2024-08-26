@@ -1,4 +1,4 @@
-import { Button, Container } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import BreadcrumbBar from "../../../components/BreadcrumbBar";
 import classes from "./CartStyle.module.scss";
 import { useEffect, useState } from "react";
@@ -36,19 +36,27 @@ const Cart = () => {
           <BreadcrumbBar path={[{ label: "Sách của bạn", url: "" }]}></BreadcrumbBar>
         </div>
         <div className={classes.cartContent}>
-          <div className={classes.cartContentBookList}>
-            <CartList
-              setTotalPrice={setTotalPrice}
-              totalPrice={totalPrice}
-              cartList={cartList}
-            ></CartList>
-          </div>
-          <div className={classes.cartContentPaymentBox}>
-            <PaymentBox
-              totalQuantity={getIdCartList()?.reduce((total, item) => total + item.quantity, 0)}
-              totalPrice={totalPrice}
-            />
-          </div>
+          {cartList?.length !== 0 ? (
+            <>
+              <div className={classes.cartContentBookList}>
+                <CartList
+                  setTotalPrice={setTotalPrice}
+                  totalPrice={totalPrice}
+                  cartList={cartList}
+                ></CartList>
+              </div>
+              <div className={classes.cartContentPaymentBox}>
+                <PaymentBox
+                  totalQuantity={getIdCartList()?.reduce((total, item) => total + item.quantity, 0)}
+                  totalPrice={totalPrice}
+                />
+              </div>
+            </>
+          ) : (
+            <Typography variant="h2" sx={{ width: "100%" }}>
+              Giỏ hàng không có sản phẩm
+            </Typography>
+          )}
         </div>
       </div>
     </Container>
