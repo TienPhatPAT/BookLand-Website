@@ -43,7 +43,8 @@ const BookDetail = () => {
                 "https://th.bing.com/th/id/R.e5e6dcd1122d90f64aef39c51c95fca2?rik=nbzY51ZOmhXSMQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-TynhaBM0klg%2fUuh3dUaWMcI%2fAAAAAAAAAXU%2fEj8cpl6tHQs%2fs1600%2fluffy.png&ehk=3lSXa4amsxZe8%2fwGCrka6Zg2Sq%2bWqgXARQc5aToSenA%3d&risl=&pid=ImgRaw&r=0",
             },
             time: "1 ngày trước",
-            content: "Sách rất hay và bổ ích. Tôi rất thích nội dung của cuốn sách này!",
+            content:
+              "Sách rất hay và bổ ích. Tôi rất thích nội dung của cuốn sách này!",
             likes: 12,
             replies: [],
           },
@@ -140,7 +141,10 @@ const BookDetail = () => {
               <div className="d-flex flex-column justify-content-start w-100">
                 <h4>Tác giả</h4>
                 {book.tacgia ? (
-                  <RouterLink to={`/author/${book.tacgia._id}`} className={classes.user_name}>
+                  <RouterLink
+                    to={`/author/${book.tacgia._id}`}
+                    className={classes.user_name}
+                  >
                     {book.tacgia.ten}
                   </RouterLink>
                 ) : (
@@ -149,7 +153,7 @@ const BookDetail = () => {
               </div>
               <div className="d-flex flex-column justify-content-start w-100">
                 <h4>Nhà xuất bản</h4>
-                <span>{book.nxb}</span>
+                <span>Kim Đồng</span>
               </div>
             </div>
             <div className="d-flex justify-content-between w-100">
@@ -208,7 +212,9 @@ const BookDetail = () => {
                 width: "4.3rem",
                 minWidth: "unset",
                 borderRadius: "100px",
-                backgroundColor: isFavorite ? "var(--primary-color)" : "rgba(255, 255, 255, .05)",
+                backgroundColor: isFavorite
+                  ? "var(--primary-color)"
+                  : "rgba(255, 255, 255, .05)",
               }}
               disableRipple
               className={classes.icon}
@@ -218,12 +224,20 @@ const BookDetail = () => {
                 width={20}
                 height="auto"
                 type="light"
-                color={isFavorite ? "var(--white-text-color)" : "var(--gray-text-color)"}
+                color={
+                  isFavorite
+                    ? "var(--white-text-color)"
+                    : "var(--gray-text-color)"
+                }
               />
             </Button>
           </div>
           <div className={classes.book_description}>
-            {isShow ? <p>{book.mota}</p> : <p>{book.mota.substring(0, 100)}...</p>}
+            {isShow ? (
+              <p>{book.mota}</p>
+            ) : (
+              <p>{book.mota.substring(0, 100)}...</p>
+            )}
             <button onClick={handleClick} className={classes.more_info}>
               {isShow ? "Thu gọn" : "Xem thêm"}
             </button>
